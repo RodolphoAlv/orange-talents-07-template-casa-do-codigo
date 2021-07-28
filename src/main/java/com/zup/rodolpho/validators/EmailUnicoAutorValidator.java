@@ -1,4 +1,4 @@
-package com.zup.rodolpho.validation;
+package com.zup.rodolpho.validators;
 
 import com.zup.rodolpho.model.Autor;
 import com.zup.rodolpho.repository.AutorRepository;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Component
