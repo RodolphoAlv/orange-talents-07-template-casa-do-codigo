@@ -20,6 +20,10 @@ public class Categoria {
         this.nome = nome;
     }
 
+    public Categoria(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
