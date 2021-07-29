@@ -34,14 +34,11 @@ public class LivroController {
     @Transactional
     public ResponseEntity<Livro> cadastrar(@Valid @RequestBody LivroRequest dto) {
 
-        Optional<Categoria> categoria = categoriaRepository.findById(dto.getCategoriaId());
-        Optional<Autor> autor = autorRepository.findById(dto.getAutorId());
+        Categoria categoria = categoriaRepository.findById(dto.getCategoriaId()).get();
+        Autor autor = autorRepository.findById(dto.getAutorId()).get();
 
-        if(categoria.isPresent() && autor.isPresent()){
-            Livro livro = livroRepository.save(dto.toModel(categoria.get(), autor.get()));
-            return ResponseEntity.ok(livro);
-        }
+        Livro livro = livroRepository.save(dto.toModel(categoria, autor));
+        return ResponseEntity.ok(livro);
 
-        return ResponseEntity.badRequest().build();
     }
 }

@@ -24,10 +24,6 @@ public class Autor {
         this.descricao = autorRequest.getDescricao();
     }
 
-    public Autor(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
     }

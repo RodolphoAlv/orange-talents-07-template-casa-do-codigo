@@ -3,11 +3,10 @@ package com.zup.rodolpho.request;
 import com.zup.rodolpho.model.Autor;
 import com.zup.rodolpho.model.Categoria;
 import com.zup.rodolpho.model.Livro;
+import com.zup.rodolpho.shared.IdExists;
 import com.zup.rodolpho.shared.UniqueValue;
 
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -20,11 +19,15 @@ public class LivroRequest {
     )
     private String titulo;
     @NotBlank
+    @Size(max = 500)
     private String resumo;
+    @NotBlank
     private String sumario;
     @NotNull
+    @Min(20)
     private BigDecimal preco;
     @NotNull
+    @Min(100)
     private Integer numeroDePaginas;
     @NotBlank
     @UniqueValue(
@@ -35,7 +38,17 @@ public class LivroRequest {
     private String isbn;
     @Future
     private LocalDate dataDePublicacao;
+    @IdExists(
+            domainClass = Categoria.class,
+            fieldName = "id",
+            message = "{categoria.nao.existe}"
+    )
     private Long categoriaId;
+    @IdExists(
+            domainClass = Autor.class,
+            fieldName = "id",
+            message = "{autor.nao.existe}"
+    )
     private Long autorId;
 
     public String getTitulo() {
