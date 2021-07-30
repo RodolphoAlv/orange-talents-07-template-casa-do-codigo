@@ -15,7 +15,7 @@ public class Livro {
     @Column(unique = true)
     private String titulo;
     private String resumo;
-    @Column(length = 10485760)
+    @Column(columnDefinition = "TEXT")
     private String sumario;
     private BigDecimal preco;
     private Integer numeroDePaginas;
