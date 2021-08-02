@@ -14,7 +14,11 @@ import javax.validation.constraints.NotNull;
 public class ClienteRequest {
     @NotBlank
     @Email
-    @UniqueValue(domainClass = Cliente.class, fieldName = "email")
+    @UniqueValue(
+            domainClass = Cliente.class,
+            fieldName = "email",
+            message = "{cliente.email.cadastrado}"
+    )
     private String email;
     @NotBlank
     private String nome;
@@ -22,7 +26,11 @@ public class ClienteRequest {
     private String sobrenome;
     @NotBlank
     @CpfOuCnpj
-    @UniqueValue(domainClass = Cliente.class, fieldName = "cpfOuCnpj")
+    @UniqueValue(
+            domainClass = Cliente.class,
+            fieldName = "cpfOuCnpj",
+            message = "{cliente.documento.cadastrado}"
+    )
     private String cpfOuCnpj;
     @NotBlank
     private String endereco;
@@ -31,7 +39,11 @@ public class ClienteRequest {
     @NotBlank
     private String cidade;
     @NotNull
-    @IdExists(domainClass = Pais.class, fieldName = "id")
+    @IdExists(
+            domainClass = Pais.class,
+            fieldName = "id",
+            message = "{pais.nao.existe}"
+    )
     private Long paisId;
     private Long estadoId;
     @NotBlank

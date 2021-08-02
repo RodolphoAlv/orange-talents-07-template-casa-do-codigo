@@ -41,7 +41,7 @@ public class ClienteController {
             estado = estadoRepository.findEstadoInPais(
                     dto.getPaisId(),
                     dto.getEstadoId()
-            ).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+            ).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Estado não encontrado no país!"));
 
         Cliente cliente = dto.toModel(pais, estado);
         clienteRepository.save(cliente);
